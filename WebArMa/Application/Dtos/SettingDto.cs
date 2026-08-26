@@ -1,0 +1,10 @@
+﻿namespace WebArMa.Application.Dtos
+{
+    public class SettingDto : WebArMaDtoBase
+    {
+        public string Key { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
+        public string Section { get; set; } = string.Empty;
+        public string? Value { get; set; }
+    }
+}

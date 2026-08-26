@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/WebArMa.Identity/">
+    <Project Path="WebArMa.Identity/WebArMa.Identity.csproj" Id="408204a4-fcdb-461b-88e9-a88f5cfc505d" />
+  </Folder>
+  <Folder Name="/WebArMa/" />
+  <Folder Name="/WebArMa/src/">
+    <Project Path="WebArMa/WebArMa.csproj" Id="edae4dd3-56dc-409b-b320-532909a5ef17" />
+  </Folder>
+</Solution>
