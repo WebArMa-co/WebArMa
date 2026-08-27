@@ -1,0 +1,6 @@
+@WebArMa.EndPoint.Test_HostAddress = http://localhost:5139
+
+GET {{WebArMa.EndPoint.Test_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

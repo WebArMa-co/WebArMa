@@ -7,9 +7,12 @@ namespace WebArMa.Application.Settings.CreateSetting
     {
         public CreateSettingCommandValidator()
         {
-            RuleFor(x => x.Key).NotEmpty().WithMessage("شناسه تنظیمات نباید خالی باشد").NotNull().WithMessage("شناسه تنظیمات نباید خالی باشد");
-            RuleFor(x => x.Type).NotEmpty().WithMessage("نوع تنظیمات نباید خالی باشد").NotNull().WithMessage("نوع تنظیمات نباید خالی باشد");
-            RuleFor(x => x.Section).NotEmpty().WithMessage("بخش تنظیمات نباید خالی باشد").NotNull().WithMessage("بخش تنظیمات نباید خالی باشد");
+            RuleFor(x => x.Key).NotEmpty().WithMessage("شناسه تنظیمات الزامی است").NotNull().WithMessage("شناسه تنظیمات الزامی است")
+                .MinimumLength(3).WithMessage("ورود حداقل 3 حرف برای شناسه تنظیمات الزامی است");
+            RuleFor(x => x.Type).NotEmpty().WithMessage("نوع تنظیمات الزامی است").NotNull().WithMessage("نوع تنظیمات الزامی است")
+                .MinimumLength(3).WithMessage("ورود حداقل 3 حرف برای نوع تنظیمات الزامی است"); ;
+            RuleFor(x => x.Section).NotEmpty().WithMessage("بخش تنظیمات الزامی است").NotNull().WithMessage("بخش تنظیمات الزامی است")
+                .MinimumLength(3).WithMessage("ورود حداقل 3 حرف برای بخش تنظیمات الزامی است"); ;
         }
     }
 }
