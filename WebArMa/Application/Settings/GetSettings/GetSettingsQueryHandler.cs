@@ -1,9 +1,9 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using WebArMa.Application.Contexts;
-using WebArMa.Application.Dtos;
 using WebArMa.Application.Interfaces.Mediator;
 using WebArMa.Application.Mappings;
+using WebArMa.Application.Settings.Dtos;
 
 namespace WebArMa.Application.Settings.GetSettings
 {

@@ -1,4 +1,6 @@
-﻿namespace WebArMa.Application.Dtos
+﻿using WebArMa.Application.Dtos;
+
+namespace WebArMa.Application.Settings.Dtos
 {
     public class SettingDto : WebArMaDtoBase
     {

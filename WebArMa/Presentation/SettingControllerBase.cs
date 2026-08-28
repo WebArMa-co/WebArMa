@@ -1,6 +1,6 @@
 ﻿using Mediator;
-using WebArMa.Application.Dtos;
 using WebArMa.Application.Settings.CreateSetting;
+using WebArMa.Application.Settings.Dtos;
 using WebArMa.Application.Settings.GetSettings;
 
 namespace WebArMa.Presentation

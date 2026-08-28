@@ -1,4 +1,4 @@
-﻿using WebArMa.Application.Dtos;
+﻿using WebArMa.Application.Settings.Dtos;
 using WebArMa.Domain.Entities;
 
 namespace WebArMa.Application.Mappings

@@ -1,5 +1,5 @@
-﻿using WebArMa.Application.Dtos;
-using WebArMa.Application.Interfaces.Mediator;
+﻿using WebArMa.Application.Interfaces.Mediator;
+using WebArMa.Application.Settings.Dtos;
 
 namespace WebArMa.Application.Settings.GetSettings
 {

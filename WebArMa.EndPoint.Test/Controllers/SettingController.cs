@@ -1,7 +1,7 @@
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
-using WebArMa.Application.Dtos;
 using WebArMa.Application.Settings.CreateSetting;
+using WebArMa.Application.Settings.Dtos;
 using WebArMa.Presentation;
 
 namespace WebArMa.EndPoint.Test.Controllers
