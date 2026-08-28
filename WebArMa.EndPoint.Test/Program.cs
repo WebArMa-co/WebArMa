@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebArMa.Blogs.DependencyInjection;
 using WebArMa.DependencyInjection;
 using WebArMa.Identity.DependencyInjection;
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddWebArMa(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL"), psg => psg.MigrationsAssembly(typeof(Program).Assembly)));
 builder.Services.AddWebArMaIdentity();
+builder.Services.AddWebArMaBlog();
 
 var app = builder.Build();
 

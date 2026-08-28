@@ -21,6 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\WebArMa.Blogs\WebArMa.Blogs.csproj" />
 		<ProjectReference Include="..\WebArMa.Identity\WebArMa.Identity.csproj" />
 		<ProjectReference Include="..\WebArMa\WebArMa.csproj" />
 	</ItemGroup>

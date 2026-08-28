@@ -1,4 +1,4 @@
-﻿namespace WebArMa.Blogs.Domain.Enums
+﻿namespace WebArMa.Blogs.Domain.Blogs.Enums
 {
     public enum Status
     {
