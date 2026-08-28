@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebArMa.Infrastructure;
 
-namespace WebArMa.Identity.Domain.Persistence
+namespace WebArMa.Identity.Persistence
 {
     public class WebArMaIdentityDbContext : IDbContextModelBuilder
     {

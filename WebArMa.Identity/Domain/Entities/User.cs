@@ -3,42 +3,32 @@ using WebArMa.Identity.Domain.Helpers;
 
 namespace WebArMa.Identity.Domain.Entities
 {
-    public record User : WebArMaEntityBase
-    {
-        public static User Create(string firstName, string lastName, string phoneNumber)
-        {
-            if (string.IsNullOrWhiteSpace(firstName))
-            {
-                throw new ArgumentException("نام الزامی است");
-            }
+	public record User : WebArMaEntityBase
+	{
+		public static User Create(string phoneNumber, string? firstName = null, string? lastName = null, string? displayName = null)
+		{
+			if (!IranianPhoneNumber.IsValid(phoneNumber))
+			{
+				throw new ArgumentException("شماره تماس وارد شده معتبر نمی‌باشد");
+			}
 
-            if (string.IsNullOrWhiteSpace(lastName))
-            {
-                throw new ArgumentException("نام خانوادگی الزامی است");
-            }
+			return new User
+			{
+				FirstName = firstName?.Trim(),
+				LastName = lastName?.Trim(),
+				DisplayName = displayName?.Trim(),
+				PhoneNumber = phoneNumber.Trim()
+			};
+		}
 
-            if (!IranianPhoneNumber.IsValid(phoneNumber))
-            {
-                throw new ArgumentException("شماره تماس وارد شده معتبر نمی‌باشد");
-            }
+		public User()
+		{
+			PhoneNumber = string.Empty;
+		}
 
-            return new User
-            {
-                FirstName = firstName.Trim(),
-                LastName = lastName.Trim(),
-                PhoneNumber = phoneNumber.Trim()
-            };
-        }
-
-        public User()
-        {
-            FirstName = string.Empty;
-            LastName = string.Empty;
-            PhoneNumber = string.Empty;
-        }
-
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string PhoneNumber { get; private set; }
-    }
+		public string PhoneNumber { get; private set; }
+		public string? FirstName { get; private set; }
+		public string? LastName { get; private set; }
+		public string? DisplayName { get; private set; }
+	}
 }
