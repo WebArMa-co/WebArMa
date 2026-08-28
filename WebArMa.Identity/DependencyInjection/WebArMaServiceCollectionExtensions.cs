@@ -8,7 +8,7 @@ namespace WebArMa.Identity.DependencyInjection
 	{
 		public static IServiceCollection AddWebArMaIdentity(this IServiceCollection services)
 		{
-			services.AddScoped<IDbContextModelBuilder, WebArMaIdentityDbContext>();
+			services.AddScoped<IDbContextModelBuilder, WebArMaIdentityModelConfiguration>();
 			return services;
 		}
 	}

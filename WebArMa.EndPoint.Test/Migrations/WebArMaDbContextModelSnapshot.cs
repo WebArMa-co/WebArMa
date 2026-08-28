@@ -69,7 +69,7 @@ namespace WebArMa.EndPoint.Test.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings");
+                    b.ToTable("Settings", (string)null);
                 });
 
             modelBuilder.Entity("WebArMa.Identity.Domain.Entities.User", b =>
@@ -116,7 +116,7 @@ namespace WebArMa.EndPoint.Test.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 #pragma warning restore 612, 618
         }

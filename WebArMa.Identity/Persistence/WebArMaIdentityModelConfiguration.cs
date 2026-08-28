@@ -3,11 +3,11 @@ using WebArMa.Infrastructure;
 
 namespace WebArMa.Identity.Persistence
 {
-    public class WebArMaIdentityDbContext : IDbContextModelBuilder
+    public class WebArMaIdentityModelConfiguration : IDbContextModelBuilder
     {
         public void Configure(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(WebArMaIdentityDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(WebArMaIdentityModelConfiguration).Assembly);
         }
     }
 }
