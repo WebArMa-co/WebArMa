@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FluentValidation;
+using WebArMa.Application.Abstractions.Mediator;
+using WebArMa.Identity.Domain.Helpers;
 
 namespace WebArMa.Identity.Application.Users.CreateUser
 {
-	internal class CraeteUserCommandValidator
+	public class CreateUserCommandValidator : WebArMaValidation<CreateUserCommand, Guid>
 	{
+		public CreateUserCommandValidator()
+		{
+			RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage("شماره تماس الزامی است").NotNull().WithMessage("شماره تماس الزامی است")
+				.Must(IranianPhoneNumber.IsValid).WithMessage("شماره تماس وارد شده معتبر نمی‌باشد");
+		}
 	}
 }

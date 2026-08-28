@@ -30,5 +30,24 @@ namespace WebArMa.Identity.Domain.Entities
 		public string? FirstName { get; private set; }
 		public string? LastName { get; private set; }
 		public string? DisplayName { get; private set; }
+		public string? PhotoUrl { get; private set; }
+		public bool ProfileCompleted { get; private set; }
+		public DateTimeOffset? PhoneVerifiedAt { get; private set; }
+
+		public string EffectiveDisplayName => !string.IsNullOrWhiteSpace(DisplayName) ? DisplayName : PhoneNumber;
+
+		public void CompleteProfile(string? firstName = null, string? lastName = null, string? displayName = null, string? photoUrl = null)
+		{
+			FirstName = firstName?.Trim();
+			LastName = lastName?.Trim();
+			DisplayName = displayName?.Trim();
+			PhotoUrl = photoUrl?.Trim();
+			ProfileCompleted = true;
+		}
+
+		public void MarkPhoneVerified()
+		{
+			PhoneVerifiedAt = DateTimeOffset.UtcNow;     /*for future when we need to change a phone number or ...*/
+		}
 	}
 }
