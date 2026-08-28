@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<PackageId>WebArMa</PackageId>
 		<VersionPrefix>1.0.0</VersionPrefix>
-		<VersionSuffix>alpha.2</VersionSuffix>
+		<VersionSuffix>alpha.3</VersionSuffix>
 		<Authors>WebArMa</Authors>
 		<Description>WebArMa Framework</Description>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -17,6 +17,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+		<PackageReference Include="Mapster" Version="10.0.12" />
+		<PackageReference Include="Mapster.DependencyInjection" Version="10.0.12" />
 		<PackageReference Include="Mediator.Abstractions" Version="3.0.2" />
 		<PackageReference Include="Mediator.SourceGenerator" Version="3.0.2">
 			<PrivateAssets>all</PrivateAssets>

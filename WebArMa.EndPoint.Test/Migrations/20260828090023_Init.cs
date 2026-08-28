@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace WebArMa.Migrations
+namespace WebArMa.EndPoint.Test.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration
@@ -23,9 +23,9 @@ namespace WebArMa.Migrations
                     Section = table.Column<string>(type: "text", nullable: false),
                     Value = table.Column<string>(type: "text", nullable: true),
                     Guid = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    DeletedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     CreatedByGuid = table.Column<Guid>(type: "uuid", nullable: true),
                     UpdatedByGuid = table.Column<Guid>(type: "uuid", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "bytea", nullable: false)
@@ -45,9 +45,9 @@ namespace WebArMa.Migrations
                     LastName = table.Column<string>(type: "text", nullable: false),
                     PhoneNumber = table.Column<string>(type: "text", nullable: false),
                     Guid = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    DeletedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
                     CreatedByGuid = table.Column<Guid>(type: "uuid", nullable: true),
                     UpdatedByGuid = table.Column<Guid>(type: "uuid", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "bytea", nullable: false)

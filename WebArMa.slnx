@@ -1,5 +1,10 @@
 <Solution>
-  <Folder Name="/WebArMa.Identity/">
+  <Folder Name="/WebArMa.Blogs/" />
+  <Folder Name="/WebArMa.Blogs/src/">
+    <Project Path="WebArMa.Blogs/WebArMa.Blogs.csproj" Id="21524bb5-3749-4f20-b43e-0e9719b80f13" />
+  </Folder>
+  <Folder Name="/WebArMa.Identity/" />
+  <Folder Name="/WebArMa.Identity/src/">
     <Project Path="WebArMa.Identity/WebArMa.Identity.csproj" Id="408204a4-fcdb-461b-88e9-a88f5cfc505d" />
   </Folder>
   <Folder Name="/WebArMa.Tests/">

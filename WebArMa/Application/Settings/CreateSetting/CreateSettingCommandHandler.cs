@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebArMa.Application.Contexts;
 using WebArMa.Application.Interfaces.Mediator;
+using WebArMa.Application.Mappings;
 using WebArMa.Domain.Entities;
 
 namespace WebArMa.Application.Settings.CreateSetting
