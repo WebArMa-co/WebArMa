@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<PackageId>WebArMa</PackageId>
 		<VersionPrefix>1.0.0</VersionPrefix>
-		<VersionSuffix>alpha.5</VersionSuffix>
+		<VersionSuffix>alpha.6</VersionSuffix>
 		<Authors>WebArMa</Authors>
 		<Description>WebArMa Framework</Description>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>

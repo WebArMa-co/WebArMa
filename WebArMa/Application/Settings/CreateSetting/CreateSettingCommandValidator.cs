@@ -3,7 +3,7 @@ using WebArMa.Application.Abstractions.Mediator;
 
 namespace WebArMa.Application.Settings.CreateSetting
 {
-    public class CreateSettingCommandValidator : WebArMaValidation<CreateSettingCommand, Guid>
+    public class CreateSettingCommandValidator : WebArMaCommandValidation<CreateSettingCommand, Guid>
     {
         public CreateSettingCommandValidator()
         {
