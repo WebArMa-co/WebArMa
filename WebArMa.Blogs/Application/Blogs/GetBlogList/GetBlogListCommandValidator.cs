@@ -6,7 +6,7 @@ using WebArMa.Blogs.Application.Blogs.Dtos;
 
 namespace WebArMa.Blogs.Application.Blogs.GetBlogList
 {
-    public class GetBlogListCommandValidator : WebArMaValidation<GetBlogListCommand, PaginatedItems<BlogDto>>
+    public class GetBlogListCommandValidator : WebArMaCommandValidation<GetBlogListCommand, PaginatedItems<BlogDto>>
     {
         public GetBlogListCommandValidator()
         {

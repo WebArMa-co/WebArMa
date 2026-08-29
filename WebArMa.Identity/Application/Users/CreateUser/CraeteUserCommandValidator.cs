@@ -4,7 +4,7 @@ using WebArMa.Identity.Domain.Helpers;
 
 namespace WebArMa.Identity.Application.Users.CreateUser
 {
-	public class CreateUserCommandValidator : WebArMaValidation<CreateUserCommand, Guid>
+	public class CreateUserCommandValidator : WebArMaCommandValidation<CreateUserCommand, Guid>
 	{
 		public CreateUserCommandValidator()
 		{

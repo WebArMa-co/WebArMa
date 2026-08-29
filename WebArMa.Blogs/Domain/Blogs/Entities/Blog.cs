@@ -26,6 +26,22 @@ namespace WebArMa.Blogs.Domain.Blogs.Entities
             };
         }
 
+        public static void Update(Blog blog, string title, string slug, string content, List<BlogCategory> blogCategories, Status status, int authorId, string metaDescription, DateTimeOffset publishedAt, string? metaTitle = null, string? canonicalUrl = null, string? ogImage = null, string? coverImage = null)
+        {
+            blog.Title = title.Trim();
+            blog.Slug = slug.Trim().Replace(" ", "-");
+            blog.Content = content.Trim();
+            blog.BlogCategories = blogCategories;
+            blog.Status = status;
+            blog.AuthorId = authorId;
+            blog.MetaDescription = metaDescription.Trim();
+            blog.MetaTitle = metaTitle?.Trim();
+            blog.CanonicalUrl = canonicalUrl?.Trim();
+            blog.OgImage = ogImage?.Trim();
+            blog.CoverImage = coverImage?.Trim();
+            blog.PublishedAt = publishedAt;
+        }
+
         public Blog()
         {
             Title = string.Empty;

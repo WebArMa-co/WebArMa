@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebArMa.Application.Contexts;
+using WebArMa.Common.Extensions;
 using WebArMa.Domain.Entities;
 using WebArMa.Infrastructure;
 using WebArMa.Persistence.Configurations;
@@ -21,6 +23,19 @@ namespace WebArMa.Persistence.Contexts
             foreach (var modelBuilderModule in modelBuilders)
             {
                 modelBuilderModule.Configure(modelBuilder);
+            }
+
+            var converter = new ValueConverter<string, string>(v => PersianTextNormalizer.Normalize(v),v => v);
+
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                foreach (var property in entityType.GetProperties())
+                {
+                    if (property.ClrType == typeof(string))
+                    {
+                        property.SetValueConverter(converter);
+                    }
+                }
             }
         }
 

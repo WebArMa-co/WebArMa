@@ -3,10 +3,14 @@ using WebArMa.Application.Abstractions.Mediator;
 
 namespace WebArMa.Blogs.Application.Blogs.CreateBlog
 {
-    public class CreateBlogCommandValidator : WebArMaCommandValidation<CreateBlogCommand, Guid>
+    public class UpdateBlogCommandValidator : WebArMaCommandValidation<UpdateBlogCommand, Guid>
     {
-        public CreateBlogCommandValidator()
+        public UpdateBlogCommandValidator()
         {
+            RuleFor(b => b.Guid)
+                .NotEmpty()
+                .WithMessage("شناسه مطلب الزامی است");
+
             RuleFor(b => b.Title)
                 .NotEmpty()
                 .WithMessage("عنوان مطلب الزامی است")
