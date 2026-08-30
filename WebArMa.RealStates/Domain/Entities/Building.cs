@@ -1,7 +1,7 @@
 ﻿using WebArMa.Domain.Entities;
 using WebArMa.RealStates.Domain.Enums;
 
-namespace WebArMa.RealStates.Domain
+namespace WebArMa.RealStates.Domain.Entities
 {
     public sealed class Building : WebArMaEntityBase
     {

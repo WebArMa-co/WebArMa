@@ -4,11 +4,11 @@ using WebArMa.Identity.Domain.Entities;
 
 namespace WebArMa.Identity.Persistence.Configurations
 {
-    public class UserConfigurations : IEntityTypeConfiguration<User>
-    {
-        public void Configure(EntityTypeBuilder<User> builder)
-        {
+	public class UserConfigurations : IEntityTypeConfiguration<User>
+	{
+		public void Configure(EntityTypeBuilder<User> builder)
+		{
 
-        }
-    }
+		}
+	}
 }

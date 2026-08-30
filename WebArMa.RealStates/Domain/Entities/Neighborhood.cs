@@ -1,6 +1,6 @@
 ﻿using WebArMa.Domain.Entities;
 
-namespace WebArMa.RealStates.Domain
+namespace WebArMa.RealStates.Domain.Entities
 {
     public sealed class Neighborhood : WebArMaEntityBase
     {

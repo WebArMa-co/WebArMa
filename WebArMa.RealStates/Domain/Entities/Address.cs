@@ -1,7 +1,7 @@
 ﻿using NetTopologySuite.Geometries;
 using WebArMa.Domain.Entities;
 
-namespace WebArMa.RealStates.Domain
+namespace WebArMa.RealStates.Domain.Entities
 {
     public class Address : WebArMaEntityBase
     {

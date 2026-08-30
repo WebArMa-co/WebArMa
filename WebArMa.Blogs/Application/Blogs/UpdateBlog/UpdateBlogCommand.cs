@@ -1,7 +1,7 @@
 ﻿using WebArMa.Application.Interfaces.Mediator;
 using WebArMa.Blogs.Domain.Blogs.Enums;
 
-namespace WebArMa.Blogs.Application.Blogs.CreateBlog
+namespace WebArMa.Blogs.Application.Blogs.UpdateBlog
 {
     public sealed record UpdateBlogCommand(
         Guid Guid,

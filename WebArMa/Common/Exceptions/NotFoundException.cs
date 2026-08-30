@@ -1,4 +1,4 @@
-﻿namespace WebArMa.Blogs.Domain.Exceptions
+﻿namespace WebArMa.Common.Exceptions
 {
     public sealed class NotFoundException : Exception
     {

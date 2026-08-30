@@ -2,7 +2,7 @@
 using WebArMa.Application.Contexts;
 using WebArMa.Application.Interfaces.Mediator;
 using WebArMa.Blogs.Domain.Exceptions;
-using WebArMa.RealStates.Domain;
+using WebArMa.RealStates.Domain.Entities;
 using WebArMa.RealStates.Domain.Enums;
 
 namespace WebArMa.RealStates.Application.UpdateProperty

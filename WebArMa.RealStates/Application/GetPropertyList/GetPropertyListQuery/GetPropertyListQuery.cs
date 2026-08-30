@@ -5,7 +5,7 @@ using WebArMa.Application.Dtos;
 using WebArMa.Application.Interfaces.Mediator;
 using WebArMa.Application.Mappings;
 using WebArMa.RealStates.Application.Dtos;
-using WebArMa.RealStates.Domain;
+using WebArMa.RealStates.Domain.Entities;
 using WebArMa.RealStates.Domain.Enums;
 
 namespace WebArMa.RealStates.Application.GetPropertyList.GetPropertyListQuery

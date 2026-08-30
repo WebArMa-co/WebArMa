@@ -5,7 +5,7 @@ using WebArMa.Application.Interfaces.Mediator;
 using WebArMa.Blogs.Domain.Blogs.Entities;
 using WebArMa.Blogs.Domain.Exceptions;
 
-namespace WebArMa.Blogs.Application.Blogs.CreateBlog
+namespace WebArMa.Blogs.Application.Blogs.UpdateBlog
 {
     public sealed class UpdateBlogCommandHandler(IWebArMaDbContext dbContext)
         : IWebArMaCommandHandler<UpdateBlogCommand, Guid>

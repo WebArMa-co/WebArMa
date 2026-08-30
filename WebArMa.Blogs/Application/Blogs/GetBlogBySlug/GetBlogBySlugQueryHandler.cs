@@ -7,7 +7,7 @@ using WebArMa.Blogs.Application.Blogs.Dtos;
 using WebArMa.Blogs.Domain.Blogs.Entities;
 using WebArMa.Blogs.Domain.Exceptions;
 
-namespace WebArMa.Blogs.Application.Blogs.GetBlugBySlug
+namespace WebArMa.Blogs.Application.Blogs.GetBlogBySlug
 {
     public class GetBlogBySlugQueryHandler(IWebArMaDbContext webArMaDbContext, WebArMaTypeAdapterConfig config) : IWebArMaQueryHandler<GetBlogBySlugQuery, BlogDto>
     {

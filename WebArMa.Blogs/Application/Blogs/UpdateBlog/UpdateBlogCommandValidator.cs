@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using WebArMa.Application.Abstractions.Mediator;
 
-namespace WebArMa.Blogs.Application.Blogs.CreateBlog
+namespace WebArMa.Blogs.Application.Blogs.UpdateBlog
 {
     public class UpdateBlogCommandValidator : WebArMaCommandValidation<UpdateBlogCommand, Guid>
     {

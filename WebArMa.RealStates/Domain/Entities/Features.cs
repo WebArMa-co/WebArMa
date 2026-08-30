@@ -1,4 +1,4 @@
-﻿namespace WebArMa.RealStates.Domain
+﻿namespace WebArMa.RealStates.Domain.Entities
 {
     public sealed class Features
     {
