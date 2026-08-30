@@ -2,7 +2,7 @@
 
 namespace WebArMa.Blogs.Domain.Blogs.Entities
 {
-    public record BlogCategory : WebArMaEntityBase
+    public class BlogCategory : WebArMaEntityBase
     {
         public static BlogCategory Create(string name, string slug, string? description = null, string? metaTitle = null, string? metaDescription = null, string? canonicalUrl = null, string? ogImage = null, string? coverImage = null, int? parentId = null, int? sortOrder = null)
         {

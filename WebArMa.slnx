@@ -7,6 +7,10 @@
   <Folder Name="/WebArMa.Identity/src/">
     <Project Path="WebArMa.Identity/WebArMa.Identity.csproj" Id="408204a4-fcdb-461b-88e9-a88f5cfc505d" />
   </Folder>
+  <Folder Name="/WebArMa.RealStates/" />
+  <Folder Name="/WebArMa.RealStates/src/">
+    <Project Path="WebArMa.RealStates/WebArMa.RealStates.csproj" Id="6dbc9610-e545-43e6-a7be-a6c0c45be0c2" />
+  </Folder>
   <Folder Name="/WebArMa.Tests/">
     <Project Path="WebArMa.EndPoint.Test/WebArMa.EndPoint.Test.csproj" Id="358d6c8a-2b77-4070-9c63-fb499cd223f2" />
   </Folder>

@@ -1,6 +1,6 @@
 ﻿namespace WebArMa.Domain.Entities
 {
-    public record Setting : WebArMaEntityBase
+    public class Setting : WebArMaEntityBase
     {
         public static Setting Create(string key, string type, string section, string? value = null)
         {

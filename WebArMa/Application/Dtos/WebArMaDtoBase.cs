@@ -1,6 +1,6 @@
 ﻿namespace WebArMa.Application.Dtos
 {
-    public class WebArMaDtoBase
+    public record WebArMaDtoBase
     {
         public Guid Guid { get; protected set; }
         public DateTimeOffset CreatedAt { get; protected set; }

@@ -3,7 +3,7 @@ using WebArMa.Blogs.Domain.Blogs.Enums;
 
 namespace WebArMa.Blogs.Application.Blogs.Dtos
 {
-    public class BlogDto : WebArMaDtoBase
+    public record BlogDto : WebArMaDtoBase
     {
         public string Title { get; private set; } = string.Empty;
         public string Slug { get; private set; } = string.Empty;

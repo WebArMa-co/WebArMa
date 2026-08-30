@@ -1,6 +1,6 @@
 ﻿namespace WebArMa.Domain.Entities
 {
-    public abstract record WebArMaEntityBase
+    public abstract class WebArMaEntityBase
     {
         protected WebArMaEntityBase()
         {

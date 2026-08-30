@@ -14,6 +14,7 @@ namespace WebArMa.Blogs.Application.Blogs.DeleteBlog
             var blog = await dbContext.Set<Blog>().FirstOrDefaultAsync(b => b.Guid == request.Guid, cancellationToken: cancellationToken) ?? throw new NotFoundException("مطلب یافت نشد");
             dbContext.Set<Blog>().Remove(blog);
             await dbContext.SaveChangesAsync(cancellationToken);
+            return Unit.Value;
         }
     }
 }

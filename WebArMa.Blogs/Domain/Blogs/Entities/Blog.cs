@@ -3,7 +3,7 @@ using WebArMa.Domain.Entities;
 
 namespace WebArMa.Blogs.Domain.Blogs.Entities
 {
-    public record Blog : WebArMaEntityBase
+    public class Blog : WebArMaEntityBase
     {
         //TO DO
 

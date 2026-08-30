@@ -2,7 +2,7 @@
 
 namespace WebArMa.Identity.Application.Users.Dtos
 {
-	public class UserDto : WebArMaDtoBase
+	public record UserDto : WebArMaDtoBase
 	{
 		public string PhoneNumber { get; set; } = string.Empty;
 		public string? FirstName { get; set; }

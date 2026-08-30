@@ -3,7 +3,7 @@ using WebArMa.Identity.Domain.Helpers;
 
 namespace WebArMa.Identity.Domain.Entities
 {
-	public record User : WebArMaEntityBase
+	public class User : WebArMaEntityBase
 	{
 		public static User Create(string phoneNumber, string? firstName = null, string? lastName = null, string? displayName = null)
 		{
