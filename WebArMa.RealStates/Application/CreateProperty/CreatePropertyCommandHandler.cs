@@ -52,7 +52,6 @@ namespace WebArMa.RealStates.Application.CreateProperty
                 ownershipType: request.OwnershipType);
 
             var building = Building.Create(
-                address: address,
                 totalFloors: request.BuildingTotalFloors,
                 unitCount: request.BuildingUnitCount,
                 unitPerFloor: request.BuildingUnitPerFloor,
@@ -67,7 +66,7 @@ namespace WebArMa.RealStates.Application.CreateProperty
                 specifications: specifications,
                 features: features,
                 propertyOwnership: ownership,
-                propertyBuilding: building);
+                building: building);
 
             await dbContext
                 .Set<Property>()
