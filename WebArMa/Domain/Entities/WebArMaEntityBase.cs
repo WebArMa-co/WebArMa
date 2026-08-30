@@ -17,5 +17,31 @@
         public Guid? UpdatedByGuid { get; private set; }
         public byte[] RowVersion { get; private set; } = [];
         public bool IsDeleted => DeletedAt.HasValue;
+
+        public void MarkDeleted()
+        {
+            if (IsDeleted)
+            {
+                return;
+            }
+
+            DeletedAt = DateTimeOffset.UtcNow;
+        }
+
+        public void Restore()
+        {
+            DeletedAt = null;
+        }
+
+        public void MarkUpdated(Guid? updatedByGuid = null)
+        {
+            UpdatedAt = DateTimeOffset.UtcNow;
+            UpdatedByGuid = updatedByGuid;
+        }
+
+        public void SetCreatedBy(Guid? createdByGuid)
+        {
+            CreatedByGuid = createdByGuid;
+        }
     }
 }

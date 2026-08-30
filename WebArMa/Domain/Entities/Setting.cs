@@ -1,43 +1,55 @@
 ﻿namespace WebArMa.Domain.Entities
 {
-    public class Setting : WebArMaEntityBase
+    public sealed class Setting : WebArMaEntityBase
     {
-        public static Setting Create(string key, string type, string section, string? value = null)
+        private Setting(string key, string type, string section, string? value)
         {
-            if (string.IsNullOrWhiteSpace(key))
-            {
-                throw new ArgumentException("شناسه تنظیمات الزامی است");
-            }
-
-            if (string.IsNullOrWhiteSpace(type))
-            {
-                throw new ArgumentException("نوع تنظیمات الزامی است");
-            }
-
-            if (string.IsNullOrWhiteSpace(section))
-            {
-                throw new ArgumentException("بخش تنظیمات الزامی است");
-            }
-
-            return new Setting
-            {
-                Key = key,
-                Type = type,
-                Section = section,
-                Value = value
-            };
+            Key = NormalizeRequired(key, nameof(key));
+            Type = NormalizeRequired(type, nameof(type));
+            Section = NormalizeRequired(section, nameof(section));
+            Value = NormalizeOptional(value);
         }
 
         private Setting()
         {
-            Key = string.Empty;
-            Type = string.Empty;
-            Section = string.Empty;
+            Key = null!;
+            Type = null!;
+            Section = null!;
         }
 
         public string Key { get; private set; }
         public string Type { get; private set; }
         public string Section { get; private set; }
         public string? Value { get; private set; }
+
+        public static Setting Create(string key, string type, string section, string? value = null)
+        {
+            return new Setting(key, type, section, value);
+        }
+
+        public void UpdateValue(string? value)
+        {
+            Value = NormalizeOptional(value);
+        }
+
+        public void Update(string key, string type, string section, string? value = null)
+        {
+            Key = NormalizeRequired(key, nameof(key));
+            Type = NormalizeRequired(type, nameof(type));
+            Section = NormalizeRequired(section, nameof(section));
+            Value = NormalizeOptional(value);
+        }
+
+        private static string NormalizeRequired(string value, string parameterName)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(value, parameterName);
+
+            return value.Trim();
+        }
+
+        private static string? NormalizeOptional(string? value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+        }
     }
 }

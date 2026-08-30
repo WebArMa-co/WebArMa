@@ -2,24 +2,58 @@
 
 namespace WebArMa.RealStates.Domain
 {
-    public class Province : WebArMaEntityBase
+    public sealed class Province : WebArMaEntityBase
     {
-        public static Province Create(string name, List<City> cities)
+        private readonly List<City> _cities = [];
+
+        private Province(string name)
         {
-            return new Province
-            {
-                Name = name,
-                Cities = cities
-            };
+            Name = ValidateName(name);
         }
 
         private Province()
         {
-            Name = string.Empty;
-            Cities = [];
+            Name = null!;
         }
 
         public string Name { get; private set; }
-        public ICollection<City> Cities { get; private set; }
+
+        public IReadOnlyCollection<City> Cities => _cities.AsReadOnly();
+
+        public static Province Create(string name)
+        {
+            return new Province(name);
+        }
+
+        public void AddCity(City city)
+        {
+            ArgumentNullException.ThrowIfNull(city);
+
+            if (_cities.Contains(city))
+            {
+                return;
+            }
+
+            _cities.Add(city);
+        }
+
+        public void RemoveCity(City city)
+        {
+            ArgumentNullException.ThrowIfNull(city);
+
+            _cities.Remove(city);
+        }
+
+        public void Rename(string name)
+        {
+            Name = ValidateName(name);
+        }
+
+        private static string ValidateName(string value)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(value);
+
+            return value.Trim();
+        }
     }
 }

@@ -12,21 +12,42 @@ namespace WebArMa.Blogs.Application.Blogs.CreateBlog
         public async ValueTask<Guid> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
         {
             var slug = request.Slug.Trim().Replace(" ", "-");
-            var checkSlugExists = await dbContext.Set<Blog>().AnyAsync(b => b.Slug == slug, cancellationToken: cancellationToken);
 
-            if (checkSlugExists)
+            var slugExists = await dbContext.Set<Blog>().AnyAsync(x => x.Slug == slug, cancellationToken);
+
+            if (slugExists)
             {
-                throw new AlreadyExistsException(nameof(Blog.Slug), "پیوند انتخاب شده از قبل وجود دارد");
+                throw new AlreadyExistsException("پیوند انتخاب شده از قبل وجود دارد", nameof(Blog.Slug));
             }
 
-            var blogCategories = await dbContext.Set<BlogCategory>().Where(b => request.BlogCategoryIds.Contains(b.Guid)).ToListAsync(cancellationToken: cancellationToken);
+            var blogCategories = await dbContext.Set<BlogCategory>().Where(x => request.BlogCategoryIds.Contains(x.Guid)).ToListAsync(cancellationToken);
 
-            //TO DO
+            if (blogCategories.Count != request.BlogCategoryIds.Distinct().Count())
+            {
+                throw new NotFoundException("یک یا چند دسته‌بندی انتخاب شده یافت نشد.", nameof(BlogCategory));
+            }
 
-            var blog = Blog.Create(request.Title, request.Slug, request.Content, blogCategories, request.Status, 0, request.MetaDescription, request.PublishedAt, request.MetaTitle, request.CanonicalUrl, request.OgImage, request.CoverImage);
+            var blog = Blog.Create(
+                title: request.Title,
+                slug: slug,
+                content: request.Content,
+                status: request.Status,
+                authorId: currentUser.Guid,
+                metaDescription: request.MetaDescription,
+                publishedAt: request.PublishedAt,
+                metaTitle: request.MetaTitle,
+                canonicalUrl: request.CanonicalUrl,
+                ogImage: request.OgImage,
+                coverImage: request.CoverImage);
+
+            foreach (var category in blogCategories)
+            {
+                blog.AddCategory(category);
+            }
 
             await dbContext.Set<Blog>().AddAsync(blog, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);
+
             return blog.Guid;
         }
     }

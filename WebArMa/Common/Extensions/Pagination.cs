@@ -23,7 +23,7 @@ namespace WebArMa.Common.Extensions
             return source.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
-        public static async Task<PaginatedItems<T>> ToPaginatedAsync<T>(this IQueryable<T> source, int page, int pageSize, CancellationToken cancellationToken = default) where T : class
+        public static async Task<PagedResult<T>> ToPaginatedAsync<T>(this IQueryable<T> source, int page, int pageSize, CancellationToken cancellationToken = default) where T : class
         {
             ArgumentNullException.ThrowIfNull(source);
             ArgumentOutOfRangeException.ThrowIfLessThan(page, 1);
@@ -33,7 +33,7 @@ namespace WebArMa.Common.Extensions
 
             var data = await source.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
 
-            return new PaginatedItems<T>(data, totalItems, page, pageSize);
+            return new PagedResult<T>(data, totalItems, page, pageSize);
         }
     }
 }

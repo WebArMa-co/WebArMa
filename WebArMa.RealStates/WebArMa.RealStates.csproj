@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="NetTopologySuite" Version="2.6.0" />
-    <PackageReference Include="WebArMa" Version="1.0.0-alpha.7" />
+    <PackageReference Include="WebArMa" Version="1.0.0-alpha.8" />
   </ItemGroup>
 
 </Project>

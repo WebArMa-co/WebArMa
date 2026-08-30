@@ -7,27 +7,68 @@ using WebArMa.Blogs.Domain.Exceptions;
 
 namespace WebArMa.Blogs.Application.Blogs.CreateBlog
 {
-    public class UpdateBlogCommandHandler(IWebArMaDbContext dbContext) : IWebArMaCommandHandler<UpdateBlogCommand, Guid>
+    public sealed class UpdateBlogCommandHandler(IWebArMaDbContext dbContext)
+        : IWebArMaCommandHandler<UpdateBlogCommand, Guid>
     {
-        public async ValueTask<Guid> Handle(UpdateBlogCommand request, CancellationToken cancellationToken)
+        public async ValueTask<Guid> Handle(
+            UpdateBlogCommand request,
+            CancellationToken cancellationToken)
         {
             var slug = request.Slug.Trim().Replace(" ", "-");
-            var checkSlugExists = await dbContext.Set<Blog>().AnyAsync(b => b.Guid != request.Guid && b.Slug == request.Slug, cancellationToken: cancellationToken);
 
-            if (checkSlugExists)
+            var slugExists = await dbContext
+                .Set<Blog>()
+                .AnyAsync(
+                    x => x.Guid != request.Guid &&
+                         x.Slug == slug,
+                    cancellationToken);
+
+            if (slugExists)
             {
-                throw new AlreadyExistsException(nameof(Blog.Slug), "پیوند انتخاب شده از قبل وجود دارد");
+                throw new AlreadyExistsException(
+                    nameof(Blog.Slug),
+                    "پیوند انتخاب شده از قبل وجود دارد");
             }
 
-            var blog = await dbContext.Set<Blog>().FirstOrDefaultAsync(b => b.Guid == request.Guid, cancellationToken: cancellationToken) ?? throw new NotFoundException("مطلب یافت نشد");
-            var blogCategories = await dbContext.Set<BlogCategory>().Where(b => request.BlogCategoryIds.Contains(b.Guid)).ToListAsync(cancellationToken: cancellationToken);
+            var blog = await dbContext
+                .Set<Blog>()
+                .FirstOrDefaultAsync(
+                    x => x.Guid == request.Guid,
+                    cancellationToken)
+                ?? throw new NotFoundException("مطلب یافت نشد");
 
-            //TO DO
+            var blogCategories = await dbContext
+                .Set<BlogCategory>()
+                .Where(x => request.BlogCategoryIds.Contains(x.Guid))
+                .ToListAsync(cancellationToken);
 
-            Blog.Update(blog, request.Title, request.Slug, request.Content, blogCategories, request.Status, 0, request.MetaDescription, request.PublishedAt, request.MetaTitle, request.CanonicalUrl, request.OgImage, request.CoverImage);
+            if (blogCategories.Count != request.BlogCategoryIds.Distinct().Count())
+            {
+                throw new NotFoundException(
+                    nameof(BlogCategory),
+                    "یک یا چند دسته‌بندی انتخاب شده یافت نشد.");
+            }
 
-            await dbContext.Set<Blog>().AddAsync(blog, cancellationToken);
+            blog.Update(
+                title: request.Title,
+                slug: slug,
+                content: request.Content,
+                status: request.Status,
+                authorId: blog.AuthorId,
+                metaDescription: request.MetaDescription,
+                publishedAt: request.PublishedAt,
+                metaTitle: request.MetaTitle,
+                canonicalUrl: request.CanonicalUrl,
+                ogImage: request.OgImage,
+                coverImage: request.CoverImage);
+
+            foreach (var category in blogCategories)
+            {
+                blog.AddCategory(category);
+            }
+
             await dbContext.SaveChangesAsync(cancellationToken);
+
             return blog.Guid;
         }
     }

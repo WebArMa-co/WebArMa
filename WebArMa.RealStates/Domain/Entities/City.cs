@@ -4,26 +4,62 @@ namespace WebArMa.RealStates.Domain
 {
     public class City : WebArMaEntityBase
     {
-        public static City Create(string name, Province province, List<Neighborhood> neighborhoods)
+        private readonly List<Neighborhood> _neighborhoods = [];
+
+        private City(string name, Province province)
         {
-            return new City
-            {
-                Name = name,
-                Province = province,
-                Neighborhoods = neighborhoods
-            };
+            ArgumentNullException.ThrowIfNull(province);
+
+            Name = ValidateName(name);
+            Province = province;
         }
+
 
         private City()
         {
-            Name = string.Empty;
+            Name = null!;
             Province = null!;
-            Neighborhoods = [];
         }
 
         public string Name { get; private set; }
         public int ProvinceId { get; private set; }
         public Province Province { get; private set; }
-        public ICollection<Neighborhood> Neighborhoods { get; private set; }
+        public IReadOnlyCollection<Neighborhood> Neighborhoods => _neighborhoods.AsReadOnly();
+
+        public static City Create(string name, Province province)
+        {
+            return new City(name, province);
+        }
+
+        public void AddNeighborhood(Neighborhood neighborhood)
+        {
+            ArgumentNullException.ThrowIfNull(neighborhood);
+
+            if (_neighborhoods.Contains(neighborhood))
+            {
+                return;
+            }
+
+            _neighborhoods.Add(neighborhood);
+        }
+
+        public void RemoveNeighborhood(Neighborhood neighborhood)
+        {
+            ArgumentNullException.ThrowIfNull(neighborhood);
+
+            _neighborhoods.Remove(neighborhood);
+        }
+
+        public void Rename(string name)
+        {
+            Name = ValidateName(name);
+        }
+
+        private static string ValidateName(string value)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(value);
+
+            return value.Trim();
+        }
     }
 }

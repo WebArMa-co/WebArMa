@@ -1,6 +1,6 @@
 ﻿namespace WebArMa.Application.Dtos
 {
-    public sealed record PaginatedItems<T>(IReadOnlyList<T> Data, int TotalItems, int PageIndex, int? PageSize) where T : class
+    public sealed record PagedResult<T>(IReadOnlyList<T> Data, int TotalItems, int PageIndex, int? PageSize) where T : class
     {
         public IReadOnlyList<T> Data { get; set; } = Data;
         public Pager Pager { get; } = new(TotalItems, PageIndex, PageSize);
