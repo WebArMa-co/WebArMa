@@ -21,7 +21,7 @@ namespace WebArMa.Blogs.Domain.Blogs.Entities
             };
         }
 
-        public BlogCategory()
+        private BlogCategory()
         {
             Name = string.Empty;
             Slug = string.Empty;

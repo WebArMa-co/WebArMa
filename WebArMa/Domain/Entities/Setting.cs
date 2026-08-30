@@ -28,7 +28,7 @@
             };
         }
 
-        public Setting()
+        private Setting()
         {
             Key = string.Empty;
             Type = string.Empty;

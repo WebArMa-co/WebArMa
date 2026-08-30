@@ -42,7 +42,7 @@ namespace WebArMa.Blogs.Domain.Blogs.Entities
             blog.PublishedAt = publishedAt;
         }
 
-        public Blog()
+        private Blog()
         {
             Title = string.Empty;
             Slug = string.Empty;
