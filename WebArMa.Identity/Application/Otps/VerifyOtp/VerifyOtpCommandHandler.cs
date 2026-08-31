@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebArMa.Application.Contexts;
 using WebArMa.Application.Interfaces.Mediator;
+using WebArMa.Identity.Application.Interfaces.Services;
 using WebArMa.Identity.Application.Otps.Dtos;
 using WebArMa.Identity.Application.Tokens.CreateToken;
 using WebArMa.Identity.Application.Users.CreateUser;
@@ -9,7 +10,7 @@ using WebArMa.Identity.Domain.Entities;
 
 namespace WebArMa.Identity.Application.Otps.VerifyOtp
 {
-	public class VerifyOtpCommandHandler(IWebArMaDbContext dbContext, IMediator mediator) : IWebArMaCommandHandler<VerifyOtpCommand, VerifyOtpResult>
+	public class VerifyOtpCommandHandler(IWebArMaDbContext dbContext, IMediator mediator, IJwtTokenService jwtTokenService) : IWebArMaCommandHandler<VerifyOtpCommand, VerifyOtpResult>
 	{
 		public async ValueTask<VerifyOtpResult> Handle(VerifyOtpCommand command, CancellationToken cancellationToken)
 		{
@@ -40,9 +41,11 @@ namespace WebArMa.Identity.Application.Otps.VerifyOtp
 
 			var userGuid = await mediator.Send(new CreateUserCommand(command.PhoneNumber), cancellationToken);
 			var user = await dbContext.Set<User>().FirstAsync(u => u.Guid == userGuid, cancellationToken);
-			var token = await mediator.Send(new CreateTokenCommand(user.Id), cancellationToken);
 
-			return new VerifyOtpResult(user.Guid, token.RawToken, token.ExpiresAt);
+			var (accessToken, accessTokenExpiresAt) = jwtTokenService.GenerateAccessToken(user.Guid, user.PhoneNumber);
+			var refreshToken = await mediator.Send(new CreateTokenCommand(user.Id), cancellationToken);
+
+			return new VerifyOtpResult(user.Guid, accessToken, accessTokenExpiresAt, refreshToken.RawToken, refreshToken.ExpiresAt);
 		}
 	}
 }
